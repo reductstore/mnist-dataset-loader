@@ -11,14 +11,14 @@ async def main():
     for foldername in os.listdir(path):
         dataset_name = foldername
         folder_path=os.path.join(path,dataset_name)
-        for filename in os.listdir(folder_path):
-            label_path = os.path.join(folder_path, filename)
+        for digit in os.listdir(folder_path):
+            label_path = os.path.join(folder_path, digit)
             for i in os.listdir(label_path):
                 img_path=os.path.join(label_path,i)
                 with open(img_path,'rb') as f:
                     img_data=f.read()
                 record = {
-                    "label": filename
+                    "label": digit
                 }
                 ts = time_ns() / 1000
                 await bucket.write(dataset_name,img_data,timestamp=ts,labels=record,content_type="image/png")
