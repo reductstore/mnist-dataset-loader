@@ -10,7 +10,7 @@ async def main():
     path = "./mnist_png"
     for foldername in os.listdir(path):
         dataset_name = foldername
-        folder_path=os.path.join(foldername,dataset_name)
+        folder_path=os.path.join(path,dataset_name)
         for filename in os.listdir(folder_path):
             label_path = os.path.join(folder_path, filename)
             for i in os.listdir(label_path):
